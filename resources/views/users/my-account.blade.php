@@ -5,6 +5,36 @@
 @endsection
 
 @section('content')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        input[type="file"] {
+            display: block;
+        }
+        .imageThumb {
+            max-height: 100px;
+            border: 2px solid;
+            padding: 1px;
+            cursor: pointer;
+        }
+        .pip {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+        }
+        .remove {
+            display: block;
+            background: #444;
+            border: 1px solid black;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        .remove:hover {
+            background: white;
+            color: black;
+        }
+    </style>
     <!-- single-product-menu start -->
     <div class="single-product-menu">
         <div class="container">
@@ -30,13 +60,13 @@
                     <h1>Upload cell details</h1>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            {{--<img src="http://placehold.it/180" alt="your image" id="firstImg">--}}
                             <div id="preview"></div>
                             <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
                                 {!! csrf_field() !!}
                                     <div class="form-group required">
                                         <div class="col-sm-10">
-                                            <input type="file" name="image[]" class="form-control" multiple>
+                                            <input type="file" name="files[]" id="files" class="form-control" multiple>
+                                            <br><br>
                                             <input type="submit" class="btn btn-success" name="imgSubmit" >
                                         </div>
                                     </div>
@@ -204,5 +234,35 @@
         </div>
     </section>
     <!-- my-account-area end -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function(e) {
+                    var files = e.target.files,
+                        filesLength = files.length;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function(e) {
+                            var file = e.target;
+                            $("<span class=\"pip\">" +
+                                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                                "<br/><span class=\"remove\">Remove image</span>" +
+                                "</span>").insertAfter("#files");
+                            $(".remove").click(function(){
+                                $(this).parent(".pip").remove();
+                            });
+                        });
+                        fileReader.readAsDataURL(f);
+                    }
+                });
+            } else {
+                alert("Your browser doesn't support to File API")
+            }
+        });
+    </script>
+
     @include('partials.ourbrand')
+
 @endsection
