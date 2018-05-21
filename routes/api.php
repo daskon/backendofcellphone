@@ -29,6 +29,6 @@ Route::get('/myaccount', [
     'uses' => 'UserController@getMyAccount'
 ]);
 
-Route::post('/myaccount', [
-    'uses' => 'UserController@storeImage'
+Route::get('/upload', [
+    'uses' => 'UserController@uploadImage'
 ]);

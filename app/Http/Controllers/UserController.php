@@ -14,12 +14,8 @@ class UserController extends Controller
         return view('users.my-account');
     }
 
-    public function storeImage(Request $request){
-
-        $imageName = request()->file->getClientOriginalName();
-        request()->file->move(public_path('upload'), $imageName);
-
-
-        return response()->json(['uploaded' => '/upload/'.$imageName]);
+    public function uploadImage(){
+        return view('users.upload');
     }
+
 }
