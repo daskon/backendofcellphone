@@ -25,10 +25,10 @@ Route::get('/login', [
     'uses' => 'UserController@getLogin'
 ]);
 
-Route::get('/myaccount', [
+Route::get('/myaccount/{id}', [
     'uses' => 'UserController@getMyAccount'
 ]);
 
-Route::get('/upload', [
+Route::post('/myaccount/{id}', [
     'uses' => 'UserController@uploadImage'
 ]);
