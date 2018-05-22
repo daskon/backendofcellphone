@@ -16,15 +16,15 @@ class CreateMobileDetailsTable extends Migration
         Schema::create('mobile_details', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->string('specifications');
+            $table->longText('description');
+            $table->longText('specifications');
             $table->string('manufacturer');
             $table->string('model');
-            $table->integer('contact');
+            $table->integer('contact')->unique();
             $table->integer('price');
-            $table->integer('img_id');
-            $table->string('user_id');
-            $table->timestamps();
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
