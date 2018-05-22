@@ -59,7 +59,8 @@
                                     <div class="form-group required">
                                         <label class="col-sm-2 control-label">Specifications</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" placeholder="">
+                                            3G/4G <input type="checkbox" id="">
+                                            Dual SIM <input type="checkbox" id="">
                                         </div>
                                     </div>
                                     <div class="form-group required">
@@ -258,7 +259,6 @@
         </div>
     </section>
     <!-- my-account-area end -->
-
     @include('partials.ourbrand')
 
 @endsection

@@ -7,6 +7,10 @@ use App\handler;
 
 class UserController extends Controller
 {
+    public function MobileDetails() {
+       return $this->hasMany('App\MobileDetails');
+    }
+
     public function getLogin(){
         return view('users.login');
     }
