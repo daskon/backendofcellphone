@@ -15,6 +15,10 @@ class UserController extends Controller
         return view('users.login');
     }
 
+    public function getRegister(){
+        return view('users.register');
+    }
+
     public function getMyAccount($id) {
         return view('users.my-account');
     }

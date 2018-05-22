@@ -25,9 +25,15 @@ Route::get('/login', [
     'uses' => 'UserController@getLogin'
 ]);
 
+Route::get('/register', [
+    'uses' => 'UserController@getRegister'
+]);
+
 Route::get('/myaccount/{id}', [
     'uses' => 'UserController@getMyAccount'
 ]);
+
+
 
 Route::post('/myaccount/{id}', [
     'uses' => 'UserController@uploadImage'

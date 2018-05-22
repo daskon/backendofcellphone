@@ -35,7 +35,7 @@
                                 </p>
                                 <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
                                 <button class="button">
-                                    <span>Continue</span>
+                                    <span><a href="{{url('api/register')}}">Continue</a></span>
                                 </button>
                             </div>
                         </div>
