@@ -29,11 +29,13 @@ Route::get('/register', [
     'uses' => 'UserController@getRegister'
 ]);
 
+Route::post('/register', [
+    'uses' => 'UserController@storeUser'
+]);
+
 Route::get('/myaccount/{id}', [
     'uses' => 'UserController@getMyAccount'
 ]);
-
-
 
 Route::post('/myaccount/{id}', [
     'uses' => 'UserController@uploadImage'

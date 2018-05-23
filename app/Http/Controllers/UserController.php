@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\handler;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUserWelcome;
 
 class UserController extends Controller
 {
@@ -69,6 +71,15 @@ class UserController extends Controller
             else {
             header("HTTP/1.0 405 Method Not Allowed");
             }
-            }
+    }
+
+    public function storeUser(Request $request){
+
+        $email = $request->input('input-email');
+
+        Mail::to($email)->send(new NewUserWelcome());
+
+       return redirect('api/login');
+    }
 
 }

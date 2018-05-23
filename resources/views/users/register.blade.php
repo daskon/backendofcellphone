@@ -33,7 +33,7 @@
                                 <p>
                                     <strong>I am a new customer</strong>
                                 </p>
-                                <form>
+                                <form action="{{url('api/register')}}" method="post">
                                     <div class="form-group">
                                         <label class="control-label" for="input-first">First Name
                                         </label>
@@ -59,6 +59,7 @@
                                         </label>
                                         <input
                                                 id="input-email"
+                                                name="input-email"
                                                 class="form-control"
                                                 type="email"
                                                 placeholder="email address"
