@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+
+    <!-- dropdown select modify -->
+    <link rel="stylesheet" href="{{url('css/select2.min.css')}}">
+
     <!-- single-product-menu start -->
     <div class="single-product-menu">
         <div class="container">
@@ -68,10 +72,9 @@
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">Location
                                         </label>
-                                            <select id="select-location" class="form-control">
-                                                <option value="">Location</option>
-                                                <optgroup label="Districts">
-                                                    <option value="1506" selected="selected">Colombo</option>
+                                            <select id="select-location" class="form-control" >
+                                                <option></option>
+                                                    <option value="1506">Colombo</option>
                                                     <option value="1636">Kandy</option>
                                                     <option value="1559">Galle</option>
                                                     <option value="1432">Ampara</option>
@@ -96,7 +99,6 @@
                                                     <option value="1788">Ratnapura</option>
                                                     <option value="1806">Trincomalee</option>
                                                     <option value="1818">Vavuniya</option>
-                                                </optgroup>
                                             </select>
                                     </div>
                                     <div class="form-group">
@@ -150,6 +152,25 @@
         </div>
     </section>
     <!-- my-account-area end -->
+
+    <script src="{{\Illuminate\Support\Facades\URL::asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
+    <script src="{{\Illuminate\Support\Facades\URL::asset('js/select2.min.js')}}"></script>
+
+    <script type="text/javascript">
+
+      $("#select-location").select2({
+          placeholder: "Select your location",
+          allowClear: true
+      });
+
+      
+
+    </script>
+    <style type="text/css">
+        .select2{
+            width: 100%!important;
+        }
+    </style>
 
     @include('partials.ourbrand')
 
