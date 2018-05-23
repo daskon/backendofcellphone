@@ -163,7 +163,11 @@
           allowClear: true
       });
 
-      
+//      $(document).ready(function(){
+//          $('#select-division').change(function() {
+//              alert($("#select-division option:selected").text());
+//          });
+//      });
 
     </script>
     <style type="text/css">
