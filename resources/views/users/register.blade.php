@@ -107,9 +107,7 @@
                                         <select id="select-division" class="form-control">
                                             <option value="">Division</option>
                                             <optgroup label="Division">
-                                                <option value="1636">Nugegoda</option>
-                                                <option value="1559">Dehiwala</option>
-                                                <option value="1432">Colombo 6</option>
+                                                <option value="">Select sub-division</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -161,13 +159,15 @@
       $("#select-location").select2({
           placeholder: "Select your location",
           allowClear: true
+      }).on('change', function() {
+          var data = $("#select-location option:selected").text();
+          console.log(data);
       });
 
-//      $(document).ready(function(){
-//          $('#select-division').change(function() {
-//              alert($("#select-division option:selected").text());
-//          });
-//      });
+      $("#select-location").on('change',function(){
+          $("#select-division").load("colombo_sub_divisions.txt");
+      });
+
 
     </script>
     <style type="text/css">
