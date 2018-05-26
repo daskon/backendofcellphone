@@ -74,41 +74,38 @@
                                         </label>
                                             <select id="select-location" class="form-control" >
                                                 <option></option>
-                                                    <option value="1506">Colombo</option>
-                                                    <option value="1636">Kandy</option>
-                                                    <option value="1559">Galle</option>
-                                                    <option value="1432">Ampara</option>
-                                                    <option value="1452">Anuradhapura</option>
-                                                    <option value="1475">Badulla</option>
-                                                    <option value="1491">Batticaloa</option>
-                                                    <option value="1577">Gampaha</option>
-                                                    <option value="1592">Hambantota</option>
-                                                    <option value="1605">Jaffna</option>
-                                                    <option value="1620">Kalutara</option>
-                                                    <option value="1658">Kegalle</option>
-                                                    <option value="1670">Kilinochchi</option>
-                                                    <option value="1674">Kurunegala</option>
-                                                    <option value="1706">Mannar</option>
-                                                    <option value="1712">Matale</option>
-                                                    <option value="1724">Matara</option>
-                                                    <option value="1740">Moneragala</option>
-                                                    <option value="1752">Mullativu</option>
-                                                    <option value="1757">Nuwara Eliya</option>
-                                                    <option value="1763">Polonnaruwa</option>
-                                                    <option value="1771">Puttalam</option>
-                                                    <option value="1788">Ratnapura</option>
-                                                    <option value="1806">Trincomalee</option>
-                                                    <option value="1818">Vavuniya</option>
+                                                    <option value="colombo">Colombo</option>
+                                                    <option value="kandy">Kandy</option>
+                                                    <option value="galle">Galle</option>
+                                                    <option value="ampara">Ampara</option>
+                                                    <option value="anuradhapura">Anuradhapura</option>
+                                                    <option value="badulla">Badulla</option>
+                                                    <option value="batticaloa">Batticaloa</option>
+                                                    <option value="gampaha">Gampaha</option>
+                                                    <option value="hambantota">Hambantota</option>
+                                                    <option value="jaffna">Jaffna</option>
+                                                    <option value="kalutara">Kalutara</option>
+                                                    <option value="kegalle">Kegalle</option>
+                                                    <option value="kilinochchi">Kilinochchi</option>
+                                                    <option value="kurunegala">Kurunegala</option>
+                                                    <option value="mannar">Mannar</option>
+                                                    <option value="matale">Matale</option>
+                                                    <option value="matara">Matara</option>
+                                                    <option value="moneragala">Moneragala</option>
+                                                    <option value="mullativu">Mullativu</option>
+                                                    <option value="nuwara-eliya">Nuwara Eliya</option>
+                                                    <option value="polonnaruwa">Polonnaruwa</option>
+                                                    <option value="puttalama">Puttalam</option>
+                                                    <option value="ratnapura">Ratnapura</option>
+                                                    <option value="trincomalee">Trincomalee</option>
+                                                    <option value="vavuniya">Vavuniya</option>
                                             </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="select-division">Division
                                         </label>
                                         <select id="select-division" class="form-control">
-                                            <option value="">Division</option>
-                                            <optgroup label="Division">
-                                                <option value="">Select sub-division</option>
-                                            </optgroup>
+                                                <option selected>Select sub-division</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -160,14 +157,36 @@
           placeholder: "Select your location",
           allowClear: true
       }).on('change', function() {
+
+          //catch the location from dropdown and store into data variable
           var data = $("#select-location option:selected").text();
-          console.log(data);
+
+          //find matching divisions from selected location in text files
+          $.get( "/" + this.value + ".txt", function(data) {
+
+              lines = data.split('\n');
+              var tag = document.getElementById('select-division');
+
+              //create options for dropdown list dynamically
+              for(var line = 0; line < lines.length; ++line){
+                  tag.options.add(new Option(lines[line]));
+              }
+          });
+
+          //when new location were selected automatically null options value
+          document.getElementById('select-division').innerText = null;
       });
 
-      $("#select-location").on('change',function(){
-          $("#select-division").load("colombo_sub_divisions.txt");
+      //prevent input numbers for first name
+      $("#input-first").on('change', function() {
+          var userStr = document.getElementById('input-first').value;
+          if(userStr.match(/\d/)){
+              userStr = userStr.replace(/\d+/g,"");
+              document.getElementById('input-first').style.border="1px solid red";
+              document.getElementById('input-first').focus();
+          }
+          
       });
-
 
     </script>
     <style type="text/css">
