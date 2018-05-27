@@ -177,16 +177,39 @@
           document.getElementById('select-division').innerText = null;
       });
 
-      //prevent input numbers for first name
-      $("#input-first").on('change', function() {
-          var userStr = document.getElementById('input-first').value;
-          if(userStr.match(/\d/)){
-              userStr = userStr.replace(/\d+/g,"");
-              document.getElementById('input-first').style.border="1px solid red";
-              document.getElementById('input-first').focus();
+      //prevent numbers for first name field
+      $("#input-first,#input-last,#input-email").on('change', function(){
+
+          var first = document.getElementById('input-first').value;
+          var last = document.getElementById('input-last').value;
+          var email = document.getElementById('input-email').value;
+
+          if (typeof first !== 'undefined'){
+              if(first.match(/\d/)){
+                  first = first.replace(/\d+/g,"");
+                  document.getElementById('input-first').style.border="1px solid red";
+                  document.getElementById('input-first').focus();
+              }
+              else {
+                  document.getElementById('input-first').style = null;
+              }
           }
-          
+          if (typeof last !== 'undefined'){
+              if(last.match(/\d/)){
+                  last = last.replace(/\d+/g,"");
+                  document.getElementById('input-last').style.border="1px solid red";
+                  document.getElementById('input-last').focus();
+              }
+              else {
+                  document.getElementById('input-last').style = null;
+              }
+          }
+
+          var regularExpression = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))){2,6}$/i;
+           regularExpression.test(email);
+
       });
+
 
     </script>
     <style type="text/css">
