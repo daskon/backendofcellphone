@@ -25,6 +25,10 @@
         </div>
     </div>
     <!-- single-product-menu end -->
+    <div class="alert alert-info alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success !</strong>Please check example@gmail.com for activation link.
+    </div>
     <!-- my-account-area start -->
     <section class="my-account-area">
         <div class="container">
@@ -47,6 +51,7 @@
                                                 type="text"
                                                 placeholder="First Name"
                                                 required>
+                                        <p id="ferror" style="display:none; color: #d60000;">Please, give valid first name</p>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-last">Last Name
@@ -57,17 +62,18 @@
                                                 type="text"
                                                 placeholder="Last Name"
                                                 required>
+                                        <p id="lerror" style="display:none; color: #d60000;">Please, give valid last name</p>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">Email
                                         </label>
                                         <input
                                                 id="input-email"
-                                                name="input-email"
                                                 class="form-control"
                                                 type="email"
                                                 placeholder="email address"
                                                 required>
+                                        <p id="eerror" style="display:none; color: #d60000;">Please, give valid email address!</p>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">Location
@@ -99,6 +105,7 @@
                                                     <option value="ratnapura">Ratnapura</option>
                                                     <option value="trincomalee">Trincomalee</option>
                                                     <option value="vavuniya">Vavuniya</option>
+                                                    <option value="other">Other</option>
                                             </select>
                                     </div>
                                     <div class="form-group">
@@ -115,8 +122,9 @@
                                                 id="input-password"
                                                 class="form-control"
                                                 type="password"
-                                                placeholder="Account password"
+                                                placeholder="Password: length(8), letters and numbers only"
                                                 required>
+                                        <p id="epass" style="display:none; color: #d60000;">Password: length(8), letters and numbers</p>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-password">Retype Password
@@ -127,6 +135,7 @@
                                                 type="password"
                                                 placeholder="Repeat password"
                                                 required>
+                                        <p id="erpass" style="display:none; color: #d60000;">Password not match!</p>
                                     </div>
                                     <button class="button" value="" type="submit">
                                         <span>Register</span>
@@ -178,38 +187,96 @@
       });
 
       //prevent numbers for first name field
-      $("#input-first,#input-last,#input-email").on('change', function(){
+      $("#input-first,#input-last").on('change', function(){
 
           var first = document.getElementById('input-first').value;
           var last = document.getElementById('input-last').value;
-          var email = document.getElementById('input-email').value;
+
+          var ferror = document.getElementById('ferror');
+          var lerror = document.getElementById('lerror');
 
           if (typeof first !== 'undefined'){
               if(first.match(/\d/)){
                   first = first.replace(/\d+/g,"");
                   document.getElementById('input-first').style.border="1px solid red";
+                  ferror.style.display = "block";
                   document.getElementById('input-first').focus();
               }
               else {
                   document.getElementById('input-first').style = null;
+                  ferror.style.display = "none";
               }
           }
           if (typeof last !== 'undefined'){
               if(last.match(/\d/)){
                   last = last.replace(/\d+/g,"");
                   document.getElementById('input-last').style.border="1px solid red";
+                  lerror.style.display = "block";
                   document.getElementById('input-last').focus();
               }
               else {
                   document.getElementById('input-last').style = null;
+                  lerror.style.display = "none";
               }
           }
-
-          var regularExpression = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))){2,6}$/i;
-           regularExpression.test(email);
-
       });
 
+      $("#input-email").on('change', function() {
+
+          var email = document.getElementById('input-email').value;
+          var error = document.getElementById('eerror');
+
+          var regularExpression = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))){2,6}$/i;
+          valid = regularExpression.test(email);
+
+          if(!valid){
+              document.getElementById('input-email').style.border="1px solid red";
+              error.style.display = "block";
+              document.getElementById('input-email').focus();
+          }
+          else {
+              document.getElementById('input-email').style = null;
+              error.style.display = "none";
+          }
+      });
+
+      $("#input-password").on('change', function () {
+
+          var pass = document.getElementById('input-password').value;
+
+          var epass = document.getElementById('epass');
+
+          var letter = /[a-z]/;
+          var number = /[0-9]/;
+
+          if(pass.length < 8 || !letter.test(pass) || !number.test(pass)){
+              document.getElementById('input-password').style.border="1px solid red";
+              epass.style.display = "block";
+              document.getElementById('input-password').focus();
+          }
+          else {
+              document.getElementById('input-password').style = null;
+              epass.style.display = "none";
+          }
+      });
+
+      $("#input-repassword").on('change', function () {
+
+          var pass = document.getElementById('input-password').value;
+          var rpass = document.getElementById('input-repassword').value;
+          var erpass = document.getElementById('erpass');
+
+          if(pass !== rpass){
+              document.getElementById('input-repassword').style.border="1px solid red";
+              erpass.style.display = "block";
+              document.getElementById('input-repassword').focus();
+          }
+          else {
+              document.getElementById('input-repassword').style = null;
+              erpass.style.display = "none";
+          }
+
+      });
 
     </script>
     <style type="text/css">
@@ -221,11 +288,3 @@
     @include('partials.ourbrand')
 
 @endsection
-
-
-
-
-
-
-
-
