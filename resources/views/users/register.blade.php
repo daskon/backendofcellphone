@@ -47,6 +47,7 @@
                                         </label>
                                         <input
                                                 id="input-first"
+                                                name="input-first"
                                                 class="form-control"
                                                 type="text"
                                                 placeholder="First Name"
@@ -58,6 +59,7 @@
                                         </label>
                                         <input
                                                 id="input-last"
+                                                name="input-last"
                                                 class="form-control"
                                                 type="text"
                                                 placeholder="Last Name"
@@ -69,6 +71,7 @@
                                         </label>
                                         <input
                                                 id="input-email"
+                                                name="input-email"
                                                 class="form-control"
                                                 type="email"
                                                 placeholder="email address"
@@ -76,9 +79,9 @@
                                         <p id="eerror" style="display:none; color: #d60000;">Please, give valid email address!</p>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="input-email">Location
+                                        <label class="control-label" for="select-location">Location
                                         </label>
-                                            <select id="select-location" class="form-control" >
+                                            <select id="select-location" name="select-location" class="form-control" >
                                                 <option></option>
                                                     <option value="colombo">Colombo</option>
                                                     <option value="kandy">Kandy</option>
@@ -111,7 +114,7 @@
                                     <div class="form-group">
                                         <label class="control-label" for="select-division">Division
                                         </label>
-                                        <select id="select-division" class="form-control">
+                                        <select id="select-division" name="select-division" class="form-control">
                                                 <option selected>Select sub-division</option>
                                         </select>
                                     </div>
@@ -120,6 +123,7 @@
                                         </label>
                                         <input
                                                 id="input-password"
+                                                name="input-password"
                                                 class="form-control"
                                                 type="password"
                                                 placeholder="Password: length(8), letters and numbers only"
@@ -127,7 +131,7 @@
                                         <p id="epass" style="display:none; color: #d60000;">Password: length(8), letters and numbers</p>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="input-password">Retype Password
+                                        <label class="control-label" for="input-repassword">Retype Password
                                         </label>
                                         <input
                                                 id="input-repassword"

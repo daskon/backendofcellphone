@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\handler;
 use Illuminate\Support\Facades\Mail;
@@ -75,11 +76,32 @@ class UserController extends Controller
 
     public function storeUser(Request $request){
 
-        $email = $request->input('input-email');
+        $this->validate($request,[
+            'input-first' => 'required',
+            'input-last' => 'required',
+            'input-email' => 'email|required|unique:users',
+            'select-location' => 'required',
+            'select-division' => 'required',
+            'input-password' => 'required|min:8',
+            'input-repassword' => 'required|min:8'
+        ]);
 
-        Mail::to($email)->send(new NewUserWelcome());
+        $user = new User([
+            'first' => $request->input('input-first'),
+            'last'  => $request->input('input-last'),
+            'email' => $request->input('input-email'),
+            'location' => $request->input('select-location'),
+            'sub_location' => $request->input('select-division'),
+            'password' => bcrypt($request->input('input-password'))
+        ]);
 
-       return redirect('api/login');
+        $user->save();
+
+        //$email = $request->input('input-email');
+
+        //Mail::to($email)->send(new NewUserWelcome());
+
+         return redirect()->back();
     }
 
 }
