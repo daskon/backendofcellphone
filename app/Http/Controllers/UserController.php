@@ -8,6 +8,8 @@ use App\handler;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewUserWelcome;
 
+use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
     public function MobileDetails() {
@@ -20,7 +22,9 @@ class UserController extends Controller
 
     public function postLogin(Request $request){
 
+      if (Auth::attempt(['email' => $email, 'password' => $password])){
 
+      }
         //return view('users.login');
     }
 
