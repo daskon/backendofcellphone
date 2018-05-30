@@ -79,12 +79,12 @@ class UserController extends Controller
         $this->validate($request,[
             'input-first' => 'required',
             'input-last' => 'required',
-            'email' => 'email|required|unique:users',
+            'email' => 'email|required', //unique:users
             'select-location' => 'required',
             'select-division' => 'required',
             'input-password' => 'required|min:8'
         ]);
-
+          dd('succss');
         $user = new User([
             'first' => $request->input('input-first'),
             'last'  => $request->input('input-last'),

@@ -13,37 +13,32 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
-Route::group(['middleware'=>['auth:api']], function (){
-
-    Route::get('/one-item', [
-        'uses' => 'SingleProductController@getProduct'
-    ]);
-
-    Route::get('/login', [
-        'uses' => 'UserController@getLogin',
-        'as' => 'users.login'
-    ]);
-
-    Route::get('/register', [
-        'uses' => 'UserController@getRegister',
-        'as' => 'users.register'
-    ]);
-
-    Route::post('/register', [
-        'uses' => 'UserController@storeUser',
-        'as' => 'users.register'
-    ]);
-
-    Route::get('/myaccount/{id}', [
-        'uses' => 'UserController@getMyAccount'
-    ]);
-
-    Route::post('/myaccount/{id}', [
-        'uses' => 'UserController@uploadImage'
-    ]);
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
+Route::get('/one-item', [
+    'uses' => 'SingleProductController@getProduct'
+]);
+
+Route::get('/login', [
+    'uses' => 'UserController@getLogin'
+]);
+
+Route::get('/register', [
+    'uses' => 'UserController@getRegister',
+    'as' => 'users.register'
+]);
+
+Route::post('/register', [
+    'uses' => 'UserController@storeUser',
+    'as' => 'users.register'
+]);
+
+Route::get('/myaccount/{id}', [
+    'uses' => 'UserController@getMyAccount'
+]);
+
+Route::post('/myaccount/{id}', [
+    'uses' => 'UserController@uploadImage'
+]);
