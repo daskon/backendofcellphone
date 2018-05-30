@@ -25,10 +25,22 @@
         </div>
     </div>
     <!-- single-product-menu end -->
-    <div class="alert alert-info alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success !</strong>Please check example@gmail.com for activation link.
-    </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if (session('status'))
+        <div class="alert alert-info alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{ session('status') }}</strong>
+        </div>
+    @endif
+
     <!-- my-account-area start -->
     <section class="my-account-area">
         <div class="container">
@@ -37,20 +49,11 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="right-box-login">
-                                    {{--@if(count($errors) > 0)--}}
-                                    {{--<div class="alert alert-danger">--}}
-                                        {{--@foreach($errors->all() as $error)--}}
-                                            {{--<p> {{$error}} </p>--}}
-                                        {{--@endforeach--}}
-                                    {{--</div>--}}
-                                    {{--@endif--}}
-                                </div>
                                 <h2>New Customer</h2>
                                 <p>
                                     <strong>I am a new customer</strong>
                                 </p>
                                 <form action="{{url('api/register')}}" method="post">
-                                    {{csrf_token()}}
                                     <div class="form-group">
                                         <label class="control-label" for="input-first">First Name
                                         </label>

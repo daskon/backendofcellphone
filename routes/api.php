@@ -25,6 +25,10 @@ Route::get('/login', [
     'uses' => 'UserController@getLogin'
 ]);
 
+Route::post('/login', [
+    'uses' => 'UserController@postLogin'
+]);
+
 Route::get('/register', [
     'uses' => 'UserController@getRegister',
     'as' => 'users.register'

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('sub_location',30);
             $table->string('password');
             $table->rememberToken();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

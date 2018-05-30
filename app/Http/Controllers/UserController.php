@@ -18,6 +18,12 @@ class UserController extends Controller
         return view('users.login');
     }
 
+    public function postLogin(Request $request){
+
+
+        //return view('users.login');
+    }
+
     public function getRegister(){
         return view('users.register');
     }
@@ -76,15 +82,17 @@ class UserController extends Controller
 
     public function storeUser(Request $request){
 
+        $email = $request->input('input-email');
+
         $this->validate($request,[
-            'input-first' => 'required',
-            'input-last' => 'required',
-            'email' => 'email|required', //unique:users
+            'input-first' => 'required|max:20',
+            'input-last' => 'required|max:30',
+            'input-email' => 'email|required|max:60', //unique:users
             'select-location' => 'required',
             'select-division' => 'required',
             'input-password' => 'required|min:8'
         ]);
-          dd('succss');
+
         $user = new User([
             'first' => $request->input('input-first'),
             'last'  => $request->input('input-last'),
@@ -100,6 +108,6 @@ class UserController extends Controller
 
         //Mail::to($email)->send(new NewUserWelcome());
 
-         return redirect()->route('users.login');
+         return redirect('api/register')->with('status','Please check '.$email.' for activation link.');
     }
 }
