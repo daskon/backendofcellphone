@@ -37,11 +37,20 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="right-box-login">
+                                    @if(count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        @foreach($errors->all() as $error)
+                                            <p> {{$error}} </p>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                </div>
                                 <h2>New Customer</h2>
                                 <p>
                                     <strong>I am a new customer</strong>
                                 </p>
                                 <form action="{{url('api/register')}}" method="post">
+                                    {{csrf_token()}}
                                     <div class="form-group">
                                         <label class="control-label" for="input-first">First Name
                                         </label>

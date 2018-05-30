@@ -79,11 +79,10 @@ class UserController extends Controller
         $this->validate($request,[
             'input-first' => 'required',
             'input-last' => 'required',
-            'input-email' => 'email|required|unique:users',
+            'email' => 'email|required|unique:users',
             'select-location' => 'required',
             'select-division' => 'required',
-            'input-password' => 'required|min:8',
-            'input-repassword' => 'required|min:8'
+            'input-password' => 'required|min:8'
         ]);
 
         $user = new User([
@@ -101,7 +100,6 @@ class UserController extends Controller
 
         //Mail::to($email)->send(new NewUserWelcome());
 
-         return redirect()->back();
+         return redirect()->route('users.login');
     }
-
 }
