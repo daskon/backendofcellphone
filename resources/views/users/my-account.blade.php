@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{\Illuminate\Support\Facades\URL::asset('js/vendor/jquery-1.12.0.min.js')}}"></script>
 
     <!-- single-product-menu start -->
     <div class="single-product-menu">
@@ -26,59 +26,154 @@
     <!-- single-product-menu end -->
 
     <!-- my-account-area start -->
-    <section class="my-account-area accordion-my-account">
+    <section class="my-account-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <h1>Upload cell details</h1>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" action="" method="post">
                                 <fieldset>
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Your location </label>
                                         <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option value="KD" selected>Kandy</option>
-                                                <option value="CMB">Colombo</option>
-                                            </select>
+                                            <input
+                                                    class="form-control"
+                                                    id="location"
+                                                    name="location"
+                                                    type="text"
+                                                    value="{{\Illuminate\Support\Facades\Auth::user()->location}}"
+                                                    disabled>
                                         </div>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Your Division </label>
+                                        <div class="col-sm-10">
+                                            <input
+                                                    class="form-control"
+                                                    id="sub-division"
+                                                    name="sub-division"
+                                                    type="text"
+                                                    value="{{\Illuminate\Support\Facades\Auth::user()->sub_location}}"
+                                                    disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Ad Title </label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" placeholder="Your ad title">
+                                            <input class="form-control" type="text" placeholder="Your ad title"
+                                             id="title" name="title">
                                         </div>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Ad Description</label>
                                         <div class="col-sm-10">
-                                            <textarea cols="10" rows="5" class="form-control"></textarea>
+                                            <textarea cols="10" rows="5" class="form-control"
+                                             id="description" name="description"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Specifications</label>
                                         <div class="col-sm-10">
-                                            3G/4G <input type="checkbox" id="">
-                                            Dual SIM <input type="checkbox" id="">
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec1" value="">
+                                                <label for="spec1">Bluetooth</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec2" value="" >
+                                                <label for="spec2">Wi-Fi</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec3" value="">
+                                                <label for="spec3">GPS</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec4" value="">
+                                                <label for="spec4">Nano SIM</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec5" value="">
+                                                <label for="spec5">Multiple SIM cards</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec6" value="">
+                                                <label for="spec6">3G</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec7" value="">
+                                                <label for="spec7">4G</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec8" value="">
+                                                <label for="spec8">Memory Chip</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec9" value="">
+                                                <label for="spec9">Camera</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec10" value="">
+                                                <label for="spec10">Touch Screen</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="spec11" value="">
+                                                <label for="spec11">Radio</label>
+                                            </div>
+
                                         </div>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Manufacturer</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option value="samsung" selected>Samsung</option>
+                                            <label for="manufacture"></label>
+                                            <select class="form-control" id="manufacture" name="manufacture">
+                                                <option value="acer">Acer</option>
+                                                <option value="ag-tel">Ag-tel</option>
+                                                <option value="alcatel">Alcatel</option>
+                                                <option value="apple">Apple</option>
+                                                <option value="asus">Asus</option>
+                                                <option value="benq">BenQ</option>
+                                                <option value="blackberry">BlackBerry</option>
+                                                <option value="china-mobile">China Mobile</option>
+                                                <option value="dell">Dell</option>
+                                                <option value="dialog">Dialog</option>
+                                                <option value="e-tel">E-tel</option>
+                                                <option value="google">Google</option>
+                                                <option value="greentel">Greentel</option>
+                                                <option value="hp">HP</option>
+                                                <option value="htc">HTC</option>
+                                                <option value="huawei">Huawei</option>
+                                                <option value="i-mate">i-mate</option>
+                                                <option value="ipro">iPro</option>
+                                                <option value="lenovo">Lenovo</option>
+                                                <option value="lg">LG</option>
+                                                <option value="mega-gate">Megagate</option>
+                                                <option value="micromax">Micromax</option>
+                                                <option value="microsoft">Microsoft</option>
+                                                <option value="motorola">Moto</option>
                                                 <option value="nokia">Nokia</option>
+                                                <option value="oneplus">OnePlus</option>
+                                                <option value="oppo">Oppo</option>
+                                                <option value="other">Other brand</option>
+                                                <option value="palm">Palm</option>
+                                                <option value="philips">Philips</option>
+                                                <option value="q-mobile">Q Mobile</option>
+                                                <option value="samsung">Samsung</option>
+                                                <option value="sky">Sky</option>
+                                                <option value="sony-ericsson">Sony Ericsson</option>
+                                                <option value="sony">Sony</option>
+                                                <option value="vivo">Vivo</option>
+                                                <option value="xiaomi">Xiaomi</option>
+                                                <option value="zigo">Zigo</option>
+                                                <option value="zte">ZTE</option></select>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <label class="col-sm-2 control-label">Model Number</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option value="" selected>Galaxy J7</option>
-                                                <option value="">Galaxy J5</option>
-                                            </select>
+                                            <input class="form-control" type="text" placeholder="Model number">
                                         </div>
                                     </div>
                                     <div class="form-group required">
@@ -259,6 +354,7 @@
         </div>
     </section>
     <!-- my-account-area end -->
+
     @include('partials.ourbrand')
 
 @endsection

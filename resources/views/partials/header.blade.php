@@ -39,9 +39,9 @@
                             <div class="lang-curr">
                                 <ul>
                                     <li>
-                                        <span>en</span>
+                                        <span>Account</span>
                                         <ul class="dropdown-select-menu">
-                                            <li><a href="#">EN</a></li>
+                                            <li><a href="{{url('api/logout')}}">Logout</a></li>
                                         </ul>
                                     </li>
                                 </ul>

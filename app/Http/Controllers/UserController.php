@@ -20,14 +20,6 @@ class UserController extends Controller
         return view('users.login');
     }
 
-    public function postLogin(Request $request){
-
-      if (Auth::attempt(['email' => $email, 'password' => $password])){
-
-      }
-        //return view('users.login');
-    }
-
     public function getRegister(){
         return view('users.register');
     }
@@ -113,5 +105,32 @@ class UserController extends Controller
         //Mail::to($email)->send(new NewUserWelcome());
 
          return redirect('api/register')->with('status','Please check '.$email.' for activation link.');
+    }
+
+    public function postLogin(Request $request){
+
+        $this->validate($request,[
+            'input-email' => 'email|required|max:60',
+            'input-password' => 'required|min:8',
+        ]);
+
+        $email = $request->input('input-email');
+        $password = $request->input('input-password');
+
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])){
+            $id = Auth::id();
+            $user = Auth::user();
+            Auth::login($user);
+            return redirect()->to('api/myaccount/'.$id);
+        }
+        else{
+            return redirect()->back()->with('status', 'Please, check your credentials again. 
+                                                       Have you activated your account?');
+        }
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect('/');
     }
 }

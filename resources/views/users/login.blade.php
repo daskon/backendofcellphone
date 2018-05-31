@@ -21,6 +21,22 @@
         </div>
     </div>
     <!-- single-product-menu end -->
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if (session('status'))
+        <div class="alert alert-warning alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{ session('status') }}</strong>
+        </div>
+    @endif
     <!-- my-account-area start -->
     <section class="my-account-area">
         <div class="container">
@@ -45,12 +61,13 @@
                                 <p>
                                     <strong>I am a returning customer</strong>
                                 </p>
-                                <form>
+                                <form action="{{url('api/login')}}" method="post">
                                     <div class="form-group">
                                         <label class="control-label" for="input-email">E-Mail Address
                                         </label>
                                         <input
                                                 id="input-email"
+                                                name="input-email"
                                                 class="form-control"
                                                 type="email"
                                                 placeholder="E-Mail Address"
@@ -61,6 +78,7 @@
                                         </label>
                                         <input
                                                 id="input-password"
+                                                name="input-password"
                                                 class="form-control"
                                                 type="password"
                                                 placeholder="Password"

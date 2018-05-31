@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +40,15 @@ Route::post('/register', [
     'as' => 'users.register'
 ]);
 
-Route::get('/myaccount/{id}', [
-    'uses' => 'UserController@getMyAccount'
-]);
+Route::get('/myaccount/{id}', ['uses' => 'UserController@getMyAccount'], function ($id){
+    $id = Auth::id();
+    return $id;
+});
 
 Route::post('/myaccount/{id}', [
     'uses' => 'UserController@uploadImage'
+]);
+
+Route::get('/logout', [
+    'uses' => 'UserController@getLogout'
 ]);

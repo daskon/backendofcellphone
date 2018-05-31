@@ -25,6 +25,7 @@
         </div>
     </div>
     <!-- single-product-menu end -->
+    {{--catch the errors of input --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
