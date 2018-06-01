@@ -52,3 +52,7 @@ Route::post('/myaccount/{id}', [
 Route::get('/logout', [
     'uses' => 'UserController@getLogout'
 ]);
+
+Route::post('/newad', [
+    'uses' => 'MobileDetailsController@store'
+]);

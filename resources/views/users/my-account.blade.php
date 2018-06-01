@@ -33,7 +33,7 @@
                     <h1>Upload cell details</h1>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <form class="form-horizontal" action="" method="post">
+                            <form class="form-horizontal" action="{{url('api/newad')}}" method="post">
                                 <fieldset>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Your location </label>
@@ -63,7 +63,7 @@
                                         <label class="col-sm-2 control-label">Ad Title </label>
                                         <div class="col-sm-10">
                                             <input class="form-control" type="text" placeholder="Your ad title"
-                                             id="title" name="title">
+                                              id="title" name="title">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -77,47 +77,47 @@
                                         <label class="col-sm-2 control-label">Specifications</label>
                                         <div class="col-sm-10">
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec1" value="">
+                                                <input type="checkbox" id="spec1" name="spec[]" value="Bluetooth">
                                                 <label for="spec1">Bluetooth</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec2" value="" >
+                                                <input type="checkbox" id="spec2" name="spec[]" value="wifi" >
                                                 <label for="spec2">Wi-Fi</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec3" value="">
+                                                <input type="checkbox" id="spec3" name="spec[]" value="gps">
                                                 <label for="spec3">GPS</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec4" value="">
+                                                <input type="checkbox" id="spec4" name="spec[]" value="nano-sim">
                                                 <label for="spec4">Nano SIM</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec5" value="">
-                                                <label for="spec5">Multiple SIM cards</label>
+                                                <input type="checkbox" id="spec5" name="spec[]" value="dual-sim">
+                                                <label for="spec5">Dual SIM</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec6" value="">
+                                                <input type="checkbox" id="spec6" name="spec[]" value="3g">
                                                 <label for="spec6">3G</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec7" value="">
+                                                <input type="checkbox" id="spec7" name="spec[]" value="4g">
                                                 <label for="spec7">4G</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec8" value="">
+                                                <input type="checkbox" id="spec8" name="spec[]" value="chip">
                                                 <label for="spec8">Memory Chip</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec9" value="">
+                                                <input type="checkbox" id="spec9" name="spec[]" value="camera">
                                                 <label for="spec9">Camera</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec10" value="">
+                                                <input type="checkbox" id="spec10" name="spec[]" value="touch">
                                                 <label for="spec10">Touch Screen</label>
                                             </div>
                                             <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="spec11" value="">
+                                                <input type="checkbox" id="spec11" name="spec[]" value="radio">
                                                 <label for="spec11">Radio</label>
                                             </div>
 
@@ -170,27 +170,37 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Model Number</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" placeholder="Model number">
+                                            <input class="form-control" type="text" placeholder="Model number"
+                                                   id="model" name="model">
                                         </div>
                                     </div>
-                                    <div class="form-group required">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Contact Number</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" placeholder="Your contact number">
+                                            <input class="form-control" type="number" placeholder="Your contact number"
+                                              id="contact" name="contact">
                                         </div>
                                     </div>
-                                    <div class="form-group required">
-                                        <label class="col-sm-2 control-label">Price of the cell</label>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Cell Price</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" placeholder="Your price(Rs)">
+                                            <input class="form-control" type="number" placeholder="Your price( Rs )"
+                                              id="price" name="price">
                                         </div>
                                     </div>
+
+                                    @include('users.upload')
+                                    <br>
+                                    <button class="button pull-left">
+                                        <span>Post</span>
+                                    </button>
+
                                 </fieldset>
                             </form>
-                            @include('users.upload')
+
                         </div>
                     </div>
                 </div>

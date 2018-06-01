@@ -44,7 +44,12 @@ class MobileDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request,[
+           'title' => 'required|max:100',
+           'description' => 'required',
+           'manufacture' => 'required',
+           ''
+       ]);
     }
 
     /**
