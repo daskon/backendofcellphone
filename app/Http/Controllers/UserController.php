@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    public function getMyAccount($id) {
+    public function getMyAccount() {
         return view('users.my-account');
     }
 
@@ -63,7 +63,6 @@ class UserController extends Controller
                 $result["uploadName"] = $uploader->getUploadName();
 
             }
-
             echo json_encode($result);
             }
             // for delete file requests
@@ -121,7 +120,7 @@ class UserController extends Controller
             $id = Auth::id();
             $user = Auth::user();
             Auth::login($user);
-            return redirect()->to('api/myaccount/'.$id);
+            return redirect()->to('api/myaccount/');
         }
         else{
             return redirect()->back()->with('status', 'Please, check your credentials again. 

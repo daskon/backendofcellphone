@@ -31,6 +31,7 @@
 // Include the upload handler class
 require_once "handler.php";
 
+$cellpics = new \App\CellPictures();
 
 $uploader = new UploadHandler();
 
@@ -82,6 +83,8 @@ if ($method == "POST") {
 
         // To return a name used for uploaded file you can use the following line.
         $result["uploadName"] = $uploader->getUploadName();
+        $cellpics->img_path = $uploader->getUploadName();
+
     }
 
     echo json_encode($result);

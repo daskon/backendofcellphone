@@ -25,6 +25,7 @@
         </div>
     </div>
     <!-- single-product-menu end -->
+
     {{--catch the errors of input --}}
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -35,6 +36,7 @@
             </ul>
         </div>
     @endif
+
     @if (session('status'))
         <div class="alert alert-info alert-dismissible">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

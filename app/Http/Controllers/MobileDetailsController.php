@@ -46,10 +46,15 @@ class MobileDetailsController extends Controller
     {
        $this->validate($request,[
            'title' => 'required|max:100',
-           'description' => 'required',
+           'description' => 'required|max:250',
+           'spec' => 'required',
            'manufacture' => 'required',
-           ''
+           'model'  => 'required',
+           'contact' => 'required|min:10',
+           'price' => 'required'
        ]);
+
+
     }
 
     /**

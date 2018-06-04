@@ -25,6 +25,17 @@
     </div>
     <!-- single-product-menu end -->
 
+    {{--catch the errors of input --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- my-account-area start -->
     <section class="my-account-area">
         <div class="container">
@@ -128,6 +139,7 @@
                                         <div class="col-sm-10">
                                             <label for="manufacture"></label>
                                             <select class="form-control" id="manufacture" name="manufacture">
+                                                <option></option>
                                                 <option value="acer">Acer</option>
                                                 <option value="ag-tel">Ag-tel</option>
                                                 <option value="alcatel">Alcatel</option>
