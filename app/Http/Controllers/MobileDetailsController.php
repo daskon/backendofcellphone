@@ -59,7 +59,9 @@ class MobileDetailsController extends Controller
        $post = new MobileDetails([
            'title' => $request->input('title'),
            'description' => $request->input('description'),
-           'specifications' => $request->input('spec[]'),
+
+           'specifications' => $request->merge(['spec' => implode(',',(array) $request->input('spec')))]),
+
            'manufacturer' => $request->input('manufacture'),
            'model' => $request->input('model'),
            'contact' => $request->input('contact'),
