@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\MobileDetails;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class MobileDetailsController extends Controller
 {
 
@@ -54,7 +56,16 @@ class MobileDetailsController extends Controller
            'price' => 'required'
        ]);
 
-
+       $post = new MobileDetails([
+           'title' => $request->input('title'),
+           'description' => $request->input('description'),
+           'specifications' => $request->input('spec[]'),
+           'manufacturer' => $request->input('manufacture'),
+           'model' => $request->input('model'),
+           'contact' => $request->input('contact'),
+           'price' => $request->input('price'),
+           'user_id' => Auth::id()
+       ]);
     }
 
     /**
