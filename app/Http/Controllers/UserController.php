@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CellPictures;
 use App\User;
 use Illuminate\Http\Request;
 use App\handler;
@@ -29,6 +30,8 @@ class UserController extends Controller
     }
 
     public function uploadImage($id){
+
+        $cellpics = new CellPictures();
 
             $uploader = new UploadHandler();
 
@@ -61,6 +64,8 @@ class UserController extends Controller
 
                 // To return a name used for uploaded file you can use the following line.
                 $result["uploadName"] = $uploader->getUploadName();
+                $cellpics->img_path = $uploader->getUploadName();
+                $cellpics->mobile_details_id = $id;
 
             }
             echo json_encode($result);

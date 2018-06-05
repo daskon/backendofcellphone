@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CellPictures;
 use App\MobileDetails;
 use Illuminate\Http\Request;
 
@@ -59,15 +60,21 @@ class MobileDetailsController extends Controller
        $post = new MobileDetails([
            'title' => $request->input('title'),
            'description' => $request->input('description'),
-
-           'specifications' => $request->merge(['spec' => implode(',',(array) $request->input('spec')))]),
-
+           'specifications' => $request->input('spec'),
            'manufacturer' => $request->input('manufacture'),
            'model' => $request->input('model'),
            'contact' => $request->input('contact'),
            'price' => $request->input('price'),
            'user_id' => Auth::id()
        ]);
+
+       $pics = new CellPictures([
+           'img_path' => "",
+           'mobile_details_id' => ''
+       ]);
+
+       $post->save();
+
     }
 
     /**

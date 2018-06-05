@@ -106,10 +106,14 @@
 <!-- Fine Uploader DOM Element
 ====================================================================== -->
 <div id="fine-uploader-manual-trigger"></div>
+<input type="hidden" id="id" value="{{\Illuminate\Support\Facades\Auth::id()}}">
 
 <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
 ====================================================================== -->
 <script>
+
+    var id = $('#id').val();
+
     var manualUploader = new qq.FineUploader({
         element: document.getElementById('fine-uploader-manual-trigger'),
         template: 'qq-template-manual-trigger',

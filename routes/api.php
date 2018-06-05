@@ -40,9 +40,15 @@ Route::post('/register', [
     'as' => 'users.register'
 ]);
 
-Route::get('/myaccount', ['uses' => 'UserController@getMyAccount']);
+Route::get('/myaccount', [
+    'uses' => 'UserController@getMyAccount'
+]);
 
-Route::post('/myaccount/{id}', ['uses' => 'UserController@uploadImage']);
+
+Route::post('/myaccount/upload/{id}', [
+    'uses' => 'UserController@uploadImage'
+]);
+
 
 Route::get('/logout', [
     'uses' => 'UserController@getLogout'
