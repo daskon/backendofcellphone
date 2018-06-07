@@ -33,7 +33,7 @@ class UserController extends Controller
 
         $cellpics = new CellPictures();
 
-            $uploader = new UploadHandler();
+            $uploader = new handler();
 
             // Specify the list of valid extensions, ex. array("jpeg", "xml", "bmp")
             $uploader->allowedExtensions = array(); // all files types allowed by default
@@ -47,7 +47,7 @@ class UserController extends Controller
             // If you want to use the chunking/resume feature, specify the folder to temporarily save parts.
             $uploader->chunksFolder = "chunks";
 
-            $method = ismethod();
+            $method = $uploader->ismethod();
 
             if ($method == "POST") {
             header("Content-Type: text/plain");
@@ -64,9 +64,11 @@ class UserController extends Controller
 
                 // To return a name used for uploaded file you can use the following line.
                 $result["uploadName"] = $uploader->getUploadName();
+
+                //save image url into db
                 $cellpics->img_path = $uploader->getUploadName();
                 $cellpics->mobile_details_id = $id;
-
+                $cellpics->save();
             }
             echo json_encode($result);
             }

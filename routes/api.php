@@ -44,11 +44,9 @@ Route::get('/myaccount', [
     'uses' => 'UserController@getMyAccount'
 ]);
 
-
-Route::post('/myaccount/upload/{id}', [
+Route::post('/myaccount/{id}', [
     'uses' => 'UserController@uploadImage'
 ]);
-
 
 Route::get('/logout', [
     'uses' => 'UserController@getLogout'

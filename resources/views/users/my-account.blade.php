@@ -203,13 +203,13 @@
                                               id="price" name="price">
                                         </div>
                                     </div>
-
-                                    @include('users.upload')
-                                    <br>
                                     <button class="button pull-left">
                                         <span>Post</span>
                                     </button>
-
+                                    <div>
+                                        @include('users.upload')
+                                    </div>
+                                    
                                 </fieldset>
                             </form>
 

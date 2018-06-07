@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Fine Uploader New/Modern CSS file
@@ -100,7 +101,7 @@
         }
     </style>
 
-    <title>Fine Uploader Manual Upload Trigger Demo</title>
+    <title>Upload cell pictures</title>
 </head>
 <body>
 <!-- Fine Uploader DOM Element
@@ -118,7 +119,10 @@
         element: document.getElementById('fine-uploader-manual-trigger'),
         template: 'qq-template-manual-trigger',
         request: {
-            endpoint: '/plugins/php-endpoint/endpoint.php'
+            endpoint: '/api/myaccount/' + id , ///plugins/php-endpoint/endpoint.php
+            customHeaders:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            }
         },
         thumbnails: {
             placeholders: {

@@ -81,6 +81,9 @@ if ($method == "POST") {
 
         // To return a name used for uploaded file you can use the following line.
         $result["uploadName"] = $uploader->getUploadName();
+
+        $cellpics->img_path = $uploader->getUploadName();
+
     }
 
     echo json_encode($result);
