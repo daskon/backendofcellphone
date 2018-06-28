@@ -36,6 +36,13 @@
         </div>
     @endif
 
+    @if (session('status'))
+        <div class="alert alert-info alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{ session('status') }}</strong>
+        </div>
+    @endif
+
     <!-- my-account-area start -->
     <section class="my-account-area">
         <div class="container">
@@ -46,6 +53,7 @@
                         <div class="panel-body">
                             <form class="form-horizontal" action="{{url('api/newad')}}" method="post">
                                 <fieldset>
+                                    <legend>Your Cell Specifications</legend>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Your location </label>
                                         <div class="col-sm-10">
@@ -203,13 +211,16 @@
                                               id="price" name="price">
                                         </div>
                                     </div>
-                                    <button class="button pull-left">
+                                    <button class="button">
                                         <span>Post</span>
                                     </button>
+                                </fieldset>
+                                <br>
+                                <fieldset>
+                                    <legend>Upload your cell pictures</legend>
                                     <div>
                                         @include('users.upload')
                                     </div>
-                                    
                                 </fieldset>
                             </form>
 

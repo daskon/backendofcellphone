@@ -15,6 +15,7 @@ class CreateMobileDetailsTable extends Migration
     {
         Schema::create('mobile_details', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('item_id',12)->unique();
             $table->string('title');
             $table->longText('description');
             $table->longText('specifications');

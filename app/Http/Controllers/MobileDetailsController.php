@@ -57,10 +57,15 @@ class MobileDetailsController extends Controller
            'price' => 'required'
        ]);
 
+        $today = date("Ymd");
+        $rand = strtoupper(substr(uniqid(sha1(time())),0,4));
+        $unique = $today . $rand;
+
        $post = new MobileDetails([
+           'item_id'=> $unique,
            'title' => $request->input('title'),
            'description' => $request->input('description'),
-           'specifications' => $request->input('spec'),
+           'specifications' => serialize($request->input('spec')),
            'manufacturer' => $request->input('manufacture'),
            'model' => $request->input('model'),
            'contact' => $request->input('contact'),
@@ -68,13 +73,15 @@ class MobileDetailsController extends Controller
            'user_id' => Auth::id()
        ]);
 
-       $pics = new CellPictures([
-           'img_path' => "",
-           'mobile_details_id' => ''
-       ]);
-
        $post->save();
 
+       $pics = new CellPictures([
+           'item_id' => $unique
+       ]);
+
+       $pics->save();
+
+        return redirect('api/myaccount')->with('status','Cell information recorded ! Item id: '.$unique);
     }
 
     /**

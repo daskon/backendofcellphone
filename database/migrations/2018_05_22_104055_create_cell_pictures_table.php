@@ -16,8 +16,8 @@ class CreateCellPicturesTable extends Migration
         Schema::create('cell_pictures', function (Blueprint $table) {
             $table->increments('id');
             $table->string('img_path');
-            $table->integer('mobile_details_id')->unsigned();
-            $table->foreign('mobile_details_id')->references('id')->on('mobile_details');
+            $table->string('item_id',12);
+            $table->foreign('item_id')->references('item_id')->on('mobile_details');
             $table->timestamps();
         });
     }
