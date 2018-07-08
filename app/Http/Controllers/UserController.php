@@ -6,6 +6,7 @@ use App\CellPictures;
 use App\User;
 use Illuminate\Http\Request;
 use App\handler;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewUserWelcome;
 
@@ -31,7 +32,7 @@ class UserController extends Controller
 
     public function uploadImage($id){
 
-        $cellpics = new CellPictures();
+        $itemID = DB::table('mobile_details')->where('user_id', $id)->value('item_id');
 
             $uploader = new handler();
 
@@ -66,8 +67,10 @@ class UserController extends Controller
                 $result["uploadName"] = $uploader->getUploadName();
 
                 //save image url into db
-                $cellpics->img_path = $uploader->getUploadName();
-                $cellpics->mobile_details_id = $id;
+                $cellpics = new CellPictures();
+
+                $cellpics->img_path = 'img/product/' . $uploader->getUploadName();
+                $cellpics->item_id = $itemID;
                 $cellpics->save();
             }
             echo json_encode($result);
@@ -125,6 +128,8 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])){
             $id = Auth::id();
+            session(['uid' => $id]);
+
             $user = Auth::user();
             Auth::login($user);
             return redirect()->to('api/myaccount/');
@@ -136,6 +141,7 @@ class UserController extends Controller
     }
 
     public function getLogout(){
+        session()->flush();
         Auth::logout();
         return redirect('/');
     }

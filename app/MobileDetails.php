@@ -9,4 +9,8 @@ class MobileDetails extends Model
     protected $fillable = [
         'item_id','title','description','specifications','manufacturer','model','contact','price','user_id'
     ];
+
+    public function CellPics(){
+        return $this->hasMany('App\CellPictures');
+    }
 }

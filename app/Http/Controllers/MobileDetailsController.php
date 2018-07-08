@@ -61,6 +61,8 @@ class MobileDetailsController extends Controller
         $rand = strtoupper(substr(uniqid(sha1(time())),0,4));
         $unique = $today . $rand;
 
+        //session(['key' => $unique]);
+
        $post = new MobileDetails([
            'item_id'=> $unique,
            'title' => $request->input('title'),
@@ -75,11 +77,6 @@ class MobileDetailsController extends Controller
 
        $post->save();
 
-       $pics = new CellPictures([
-           'item_id' => $unique
-       ]);
-
-       $pics->save();
 
         return redirect('api/myaccount')->with('status','Cell information recorded ! Item id: '.$unique);
     }
