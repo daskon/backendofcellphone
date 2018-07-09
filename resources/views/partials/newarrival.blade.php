@@ -12,6 +12,7 @@
           $image = App\CellPictures::all()->unique('item_id');
           $details = \App\MobileDetails::all();
         ?>
+        <div class="col-lg-12">
         @foreach($image->chunk(4) as $imageChunk)
         <div class="row">
             <div class="product-carousel indicator-style">
@@ -27,46 +28,54 @@
                                 <img src="{{$image->img_path}}" alt="" class="secondary-img">
                             </a>
                         </div>
-                        <div class="product-desc">
-                            <div class="actions">
-                                <ul>
-                                    <li>
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Wish List"><em>Add to Wish List</em></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="link-compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><em>Compare this Product</em></a>
-                                    </li>
-                                </ul>
-                                <button class="button" data-toggle="tooltip" data-placement="top" title="Add To Cart">
-                                    <span>Add to Cart</span>
-                                </button>
-                            </div>
-                            <div class="product-content">
-                                <h2 class="product-name"><a href="#">
-                                        @foreach($details as $detail)
-                                            {{$detail->description}}
-                                        @endforeach
-                                    </a></h2>
-                                <div class="product-ratings">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <span class="reviews"><a href="#">0 reviews</a></span>
-                                </div>
-                                <div class="price-box">
-                                    <span class="old-price">$199.99</span>
-                                    <span class="special-price">$159.00</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
-            @endforeach
+        @endforeach
+        @foreach($details->chunk(4) as $detailsChunk)
+                <div class="row">
+                    <div class="product-carousel indicator-style">
+                        @foreach($detailsChunk as $desc)
+                        <div class="col-lg-12">
+                            <div class="single-product">
+                                <div class="product-desc">
+                                    <div class="actions">
+                                        <ul>
+                                            <li>
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Wish List"><em>Add to Wish List</em></a>
+                                            </li>
+                                            {{--<li>--}}
+                                            {{--<a href="#" class="link-compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><em>Compare this Product</em></a>--}}
+                                            {{--</li>--}}
+                                        </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <h2 class="product-name"><a href="#">
+                                                {{$desc->description}}
+                                            </a></h2>
+                                        <div class="product-ratings">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <span class="reviews"><a href="#">0 reviews</a></span>
+                                        </div>
+                                        <div class="price-box">
+                                            {{--<span class="old-price">$199.99</span>--}}
+                                            <span class="special-price">$159.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    @endforeach
+                   </div>
+                @endforeach
+        </div>
     </div>
 </section>
 <!-- new-arrival-area end -->
