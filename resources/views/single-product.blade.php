@@ -73,7 +73,11 @@
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                 <div class="single-product-content">
-                                    <h2 class="product-name">adipiscing elit</h2>
+                                    <h2 class="product-name">
+                                        @foreach ($cellInfo as $object)
+                                            {{ $object->title }}
+                                        @endforeach
+                                    </h2>
                                     <div class="product-ratings">
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <a href="#"><i class="fa fa-star"></i></a>
@@ -81,42 +85,45 @@
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <span><a class="reviewtab">0 reviews</a>
-        /
+
         <a class="reviewtab">Write a review</a></span>
                                     </div>
                                     <a href="#" class="social-img"><img src="{{URL::asset('img/link/social.png')}}" alt=""></a>
                                     <div class="price-box">
-                                        <span class="old-price">$199.99</span>
-                                        <span class="special-price">$159.00</span>
+                                        <span class="special-price">Rs.
+                                            @foreach ($cellInfo as $object)
+                                                {{ $object->price }}
+                                            @endforeach
+                                        </span>
                                     </div>
                                     <ul class="pro-content-desc">
                                         <li>
                                             Brand:
-                                            <a href="#">Canon</a>
+                                            <span>
+                                                 @foreach ($cellInfo as $object)
+                                                    {{ $object->manufacturer }}
+                                                @endforeach
+                                            </span>
                                         </li>
                                         <li>
                                             Product Code:
-                                            <span>Product 3</span>
-                                        </li>
-                                        <li>
-                                            Reward Points:
-                                            <span>200</span>
-                                        </li>
-                                        <li>
-                                            Availability:
-                                            <span>In Stock</span>
+                                            <span>
+                                                 @foreach ($cellInfo as $object)
+                                                    {{ $object->item_id }}
+                                                @endforeach
+                                            </span>
                                         </li>
                                     </ul>
                                     <div class="add-to-wc">
                                         <button class="btn-wishlist">Add to Wish List</button>
-                                        <button class="btn-compare">Compare this Product</button>
                                     </div>
                                     <div class="add-to-cart">
-                                        <label>Qty</label>
-                                        <input id="input-quantity" type="text" value="1">
-                                        <button id="button-cart" class="button">
-                                            <span>Add to Cart</span>
-                                        </button>
+                                        <label>Contact</label>
+                                            <span class="label-info">
+                                                 @foreach ($cellInfo as $object)
+                                                    {{ $object->contact }}
+                                                @endforeach
+                                            </span>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +138,11 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="common">
-                                <p> Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category', while we're not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably 'chunkier'). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR's, an important difference when compared to the latter is that the EOS 5D doesn't have any environmental seals. While Canon don't specifically refer to the EOS 5D as a 'professional' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they've not bought too many EF-S lenses...) äë</p>
+                                <p>
+                                    @foreach ($cellInfo as $object)
+                                        {{ $object->description }}
+                                    @endforeach
+                                </p>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="unique">
                                 <form action="#">

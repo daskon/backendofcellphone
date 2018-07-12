@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/one-item', [
+Route::get('/one-item/{item_id}', [
     'uses' => 'SingleProductController@getProduct'
 ]);
 
