@@ -32,43 +32,14 @@
                     <div class="single-product-tab">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="home">
-                                        <div class="single-pro-tab-img">
-                                            <img class="first-img" src="{{URL::asset('img/product/product_(12)-370x370.jpg')}}" alt="" data-zoom-image="{{URL::asset('img/product/zoom1.jpg')}}">
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="profile">
-                                        <div class="single-pro-tab-img">
-                                            <img class="first-img" src="{{URL::asset('img/product/product_(23)-370x370.jpg')}}" alt="" data-zoom-image="{{URL::asset('img/product/zoom2.jpg')}}">
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="messages">
-                                        <div class="single-pro-tab-img">
-                                            <img class="first-img" src="{{URL::asset('img/product/product_(21)-370x370.jpg')}}" alt="" data-zoom-image="{{URL::asset('img/product/zoom3.jpg')}}">
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="settings">
-                                        <div class="single-pro-tab-img">
-                                            <img class="first-img" src="{{URL::asset('img/product/product_(18)-370x370.jpg')}}" alt="" data-zoom-image="{{URL::asset('img/product/zoom4.jpg')}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Nav tabs -->
-                                <ul class="single-pro-tab" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img src="{{URL::asset('img/product/product_(12)-370x370.jpg')}}" alt=""></a>
+                                <ul class="single-pro-tab">
+                                    @foreach ($cellPics as $obj)
+                                    <li>
+                                        <a href="#">
+                                            <img src="{{$obj->img_path}}" alt="">
+                                        </a>
                                     </li>
-                                    <li role="presentation">
-                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><img src="{{URL::asset('img/product/product_(23)-370x370.jpg')}}" alt=""></a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><img src="{{URL::asset('img/product/product_(21)-370x370.jpg')}}" alt=""></a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><img src="{{URL::asset('img/product/product_(18)-370x370.jpg')}}" alt=""></a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -86,7 +57,7 @@
                                         <a href="#"><i class="fa fa-star"></i></a>
                                         <span><a class="reviewtab">0 reviews</a>
 
-        <a class="reviewtab">Write a review</a></span>
+                                     <a class="reviewtab">Write a review</a></span>
                                     </div>
                                     <a href="#" class="social-img"><img src="{{URL::asset('img/link/social.png')}}" alt=""></a>
                                     <div class="price-box">
