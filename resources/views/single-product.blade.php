@@ -36,7 +36,7 @@
                                     @foreach ($cellPics as $obj)
                                     <li>
                                         <a href="#">
-                                            <img src="{{$obj->img_path}}" alt="">
+                                            <img src="{{ URL::asset($obj->img_path) }}" alt="">
                                         </a>
                                     </li>
                                     @endforeach
@@ -81,6 +81,14 @@
                                             <span>
                                                  @foreach ($cellInfo as $object)
                                                     {{ $object->item_id }}
+                                                @endforeach
+                                            </span>
+                                        </li>
+                                        <li>
+                                            Specifications:
+                                            <span>
+                                                @foreach($spec as $object)
+                                                   {{ $object }} ,
                                                 @endforeach
                                             </span>
                                         </li>

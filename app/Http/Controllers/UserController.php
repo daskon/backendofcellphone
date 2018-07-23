@@ -40,7 +40,7 @@ class UserController extends Controller
             $uploader->allowedExtensions = array(); // all files types allowed by default
 
             // Specify max file size in bytes.
-            $uploader->sizeLimit = null;
+            $uploader->sizeLimit = 12225;
 
             // Specify the input name set in the javascript.
             $uploader->inputName = "qqfile"; // matches Fine Uploader's default inputName value by default

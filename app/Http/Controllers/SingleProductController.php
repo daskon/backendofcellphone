@@ -14,6 +14,10 @@ class SingleProductController extends Controller
         $cellPics = DB::table('cell_pictures')->where('item_id',$id)->get();
         $cellInfo = DB::table('mobile_details')->where('item_id',$id)->get();
 
-        return view('single-product',['cellPics' => $cellPics ,'cellInfo' => $cellInfo]);
+        foreach($cellInfo as $object){
+          $spec = unserialize($object->specifications);
+            return view('single-product',['cellPics' => $cellPics ,'cellInfo' => $cellInfo,'spec' => $spec]);
+        }
+
     }
 }
