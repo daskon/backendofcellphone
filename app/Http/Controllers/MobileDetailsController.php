@@ -76,7 +76,7 @@ class MobileDetailsController extends Controller
        ]);
 
        $post->save();
-
+        session(['submit'=>'true']);
 
         return redirect('api/myaccount')->with('status','Cell information recorded ! Item id: '.$unique);
     }

@@ -16,6 +16,7 @@
     <!-- Fine Uploader Thumbnails template w/ customization
     ====================================================================== -->
     <script type="text/template" id="qq-template-manual-trigger">
+        @if(session('submit'))
         <div class="qq-uploader-selector qq-uploader" qq-drop-area-text="Drop files here">
             <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
                 <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
@@ -23,6 +24,7 @@
             <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
                 <span class="qq-upload-drop-area-text-selector"></span>
             </div>
+
             <div class="buttons">
                 <div class="qq-upload-button-selector qq-upload-button">
                     <div>Select files</div>
@@ -31,6 +33,7 @@
                     <i class="icon-upload icon-white"></i> Upload
                 </button>
             </div>
+
             <span class="qq-drop-processing-selector qq-drop-processing">
                 <span>Processing dropped files...</span>
                 <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
@@ -77,6 +80,7 @@
                 </div>
             </dialog>
         </div>
+        @endif
     </script>
 
     <style>

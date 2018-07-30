@@ -216,12 +216,14 @@
                                     </button>
                                 </fieldset>
                                 <br>
+                                @if(session('submit'))
                                 <fieldset>
                                     <legend>Upload your cell pictures</legend>
                                     <div>
                                         @include('users.upload')
                                     </div>
                                 </fieldset>
+                                @endif
                             </form>
 
                         </div>
