@@ -9,13 +9,13 @@
                         <li role="presentation" class="active">
                             <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
                                 <img src="img/new_product/mobile-195x138.jpg" alt="">
-                                <span>Web Cameras 1</span>
+                                <span>Pouch</span>
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="text-al-rht">
                                 <img src="img/new_product/music-195x138.jpg" alt="">
-                                <span>aptent taciti</span>
+                                <span>Cell Batteries</span>
                             </a>
                         </li>
                         <li role="presentation">

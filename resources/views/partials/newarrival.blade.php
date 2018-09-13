@@ -21,7 +21,7 @@
                     <div class="single-product">
                         <div class="product-img">
                             <div class="label-sale">
-                                <span>sale</span>
+                                <span>New</span>
                             </div>
                             <a href="{{url('api/one-item/'.$image->item_id)}}">
                                 <img src="{{$image->img_path}}" alt="" class="primary-img">

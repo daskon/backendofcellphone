@@ -6,9 +6,9 @@
 
 @section('content')
 
-    @include('partials.newproduct')
+    {{--@include('partials.newproduct')--}}
     @include('partials.newarrival')
-    @include('partials.smartphone')
+    {{--@include('partials.smartphone')--}}
     @include('partials.ourbrand')
 
 @endsection

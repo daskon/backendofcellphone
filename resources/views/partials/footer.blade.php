@@ -48,12 +48,10 @@
                     </div>
                     <div class="footer-content">
                                 <span class="address icon">
-                                    Towerthemes, 1234 Stret Lorem,LPA States, Libero
+                                   Nugegoda, Sri Lanka
                                 </span>
                         <span class="phone icon">
-                                    01681715926
-                                        <br>
-                                    01850283787
+                                    0702399114
                                 </span>
                         <span class="email icon">admin@sellmycell</span>
                     </div>

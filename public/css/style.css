@@ -799,10 +799,10 @@ span.mega-inner {
     border-image: none;
     border-style: solid solid none;
     border-width: 4px 4px 0;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
 }
 .single-product:hover .product-img{
-    border-color: #f23c6d;
+    border-color: #fff;
 }
 .label-sale, .label-new {
     background:  url(../img/label/icon_new.png) no-repeat scroll 0 0;
@@ -837,12 +837,17 @@ span.mega-inner {
     opacity: 0;
     transition: .3s
 }
+.single-product .product-img a img.primary-img{
+    width: 75%;
+    height: 40%;
+}
 .single-product:hover .product-img a img.secondary-img{
     opacity: 1;
 }
 .product-desc {
     background-color: #f6f6f6;
     min-height: 90px;
+    width: 80%;
 }
 .single-product .actions{
     float: left;

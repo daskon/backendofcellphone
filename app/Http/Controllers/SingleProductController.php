@@ -18,6 +18,5 @@ class SingleProductController extends Controller
           $spec = unserialize($object->specifications);
             return view('single-product',['cellPics' => $cellPics ,'cellInfo' => $cellInfo,'spec' => $spec]);
         }
-
     }
 }
